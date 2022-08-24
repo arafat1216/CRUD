@@ -1,0 +1,20 @@
+﻿@model CRUD.Models.Course
+
+<div class="w-75 mx-auto shadow-lg p-5">
+    <h2 class="text-center">Add Course</h2>
+    <form asp-action="AddCourse">
+        <div class="mb-3">
+            <label asp-for="CourseName" class="form-label">Course Name</label>
+            <input asp-for="CourseName" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="CourseDescription" class="form-label">Course Description</label>
+            <input asp-for="CourseDescription" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="CoursePrice" class="form-label">Course Price</label>
+            <input asp-for="CoursePrice" type="number" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Course</button>
+    </form>
+</div>

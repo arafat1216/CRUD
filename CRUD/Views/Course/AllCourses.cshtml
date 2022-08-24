@@ -1,3 +1,38 @@
-﻿<div>
-    <h2>All Courses</h2>
+﻿@model List<CRUD.Models.Course>
+<div>
+    <div class="d-flex justify-content-between mb-3">
+        <h2>All Courses</h2>
+        <button class="btn btn-warning text-white" onclick="location.href='@Url.Action("AddCourse","Course")'">Add Course
+            <i class="fa-solid fa-circle-plus"></i>
+        </button>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Course Name</th>
+                <th scope="col">Course Description</th>
+                <th scope="col">Course Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model)
+            {
+                <tr>
+                    <td>@course.CourseName</td>
+                    <td>@course.CourseDescription</td>
+                    <td>Tk @course.CoursePrice</td>
+                    <td>
+                        <a asp-controller="Course" asp-action="EditCourse" asp-route-id="@course.CourseId" class="btn btn-dark">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a asp-controller="Course" asp-action="DeleteCourse" asp-route-id="@course.CourseId" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
