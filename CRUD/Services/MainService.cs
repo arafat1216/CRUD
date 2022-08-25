@@ -1,5 +1,8 @@
 ﻿using CRUD.Data;
 using CRUD.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
 
 namespace CRUD.Services
 {
@@ -15,6 +18,20 @@ namespace CRUD.Services
         {
             db.Courses.Add(course);
             db.SaveChanges();
+        }
+
+        public async Task Authenticate(HttpContext context, User user)
+        {
+            var claims = new List<Claim>()
+                {
+                    new Claim("userName",user.UserName),
+                    new Claim(ClaimTypes.NameIdentifier, user.UserName),
+                };
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var principal = new ClaimsPrincipal(identity);
+
+            await context.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
         }
 
         public void DeleteCourse(int id)
@@ -42,5 +59,16 @@ namespace CRUD.Services
             db.Courses.Update(course);
             db.SaveChanges();
         }
+
+        public bool ValidateUser(User user)
+        {
+            var data = db.Users.SingleOrDefault(u => u.UserName == user.UserName && u.Password == user.Password);
+
+            var result = data != null ? true : false;
+
+            return result;
+        }
+
+
     }
 }

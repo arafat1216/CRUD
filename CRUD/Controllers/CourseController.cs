@@ -1,9 +1,11 @@
 ﻿using CRUD.Models;
 using CRUD.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CRUD.Controllers
 {
+    [Authorize]
     public class CourseController : Controller
     {
         private readonly IMainService mainService;

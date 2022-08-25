@@ -11,5 +11,9 @@ namespace CRUD.Services
 
         void UpdateCourse(Course course);
         void DeleteCourse(int id);
+
+        bool ValidateUser(User user);
+
+        Task Authenticate(HttpContext context, User user);
     }
 }

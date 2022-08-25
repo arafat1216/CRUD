@@ -11,5 +11,6 @@ namespace CRUD.Data
         }
 
         public DbSet<Course>Courses { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

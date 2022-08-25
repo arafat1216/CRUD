@@ -1,7 +1,33 @@
-﻿@{
+﻿@model List<Course>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+<div>
+
+    <div class="row">
+
+        @foreach (var course in Model)
+        {
+            <div class="col-md-4 bg-light">
+                <div class="card mb-5 rounded" style="width: 18rem;">
+                    <div class="card-header bg-info py-3">
+                        <h5 class="card-title text-white">@course.CourseName</h5>
+                    </div>
+                    <div class="card-body">
+                        
+                        <p class="card-text">@course.CourseDescription</p>
+                    </div>
+                    <div class="card-footer">
+                       <p>Tk @course.CoursePrice</p>     
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+    </div>
+
 </div>
