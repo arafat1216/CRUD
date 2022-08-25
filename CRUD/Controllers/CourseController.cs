@@ -29,6 +29,7 @@ namespace CRUD.Controllers
             if(ModelState.IsValid)
             {
                 mainService.AddCourse(course);
+                TempData["success"] = "New Course Added Successfully";
                 return RedirectToAction("AllCourses");
             }
                
@@ -46,6 +47,7 @@ namespace CRUD.Controllers
             if (ModelState.IsValid)
             {
                 mainService.UpdateCourse(course);
+                TempData["success"] = "Course Updated Successfully";
                 return RedirectToAction("AllCourses");
             }
             return View(course);
@@ -55,6 +57,7 @@ namespace CRUD.Controllers
         {
 
             mainService.DeleteCourse(id);
+            TempData["success"] = "Course Deleted Successfully";
             return RedirectToAction("AllCourses");
         }
     }

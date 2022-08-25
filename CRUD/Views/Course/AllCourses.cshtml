@@ -1,5 +1,6 @@
 ﻿@model List<CRUD.Models.Course>
 <div>
+    @Html.Partial("_NotificationPartial")
     <div class="d-flex justify-content-between mb-3">
         <h2>All Courses</h2>
         <button class="btn btn-warning text-white" onclick="location.href='@Url.Action("AddCourse","Course")'">Add Course
