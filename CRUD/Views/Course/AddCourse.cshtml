@@ -6,14 +6,17 @@
         <div class="mb-3">
             <label asp-for="CourseName" class="form-label">Course Name</label>
             <input asp-for="CourseName" type="text" class="form-control">
+            <span asp-validation-for="CourseName" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="CourseDescription" class="form-label">Course Description</label>
             <input asp-for="CourseDescription" type="text" class="form-control">
+            <span asp-validation-for="CourseDescription" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="CoursePrice" class="form-label">Course Price</label>
             <input asp-for="CoursePrice" type="number" class="form-control">
+            <span asp-validation-for="CoursePrice" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Add Course</button>
     </form>

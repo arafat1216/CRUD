@@ -25,21 +25,30 @@ namespace CRUD.Controllers
         [HttpPost]
         public IActionResult AddCourse(Course course)
         {
-            mainService.AddCourse(course);   
-            return RedirectToAction("AllCourses");
+            
+            if(ModelState.IsValid)
+            {
+                mainService.AddCourse(course);
+                return RedirectToAction("AllCourses");
+            }
+               
+            return View(course);
         }
 
         public IActionResult EditCourse(int id)
         {
-            
             var course = mainService.GetCourse(id);
             return View(course);
         }
         [HttpPost]
         public IActionResult EditCourse(Course course)
         {
-            mainService.UpdateCourse(course);
-            return RedirectToAction("AllCourses");
+            if (ModelState.IsValid)
+            {
+                mainService.UpdateCourse(course);
+                return RedirectToAction("AllCourses");
+            }
+            return View(course);
         }
 
         public IActionResult DeleteCourse(int id)
